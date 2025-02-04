@@ -23,6 +23,7 @@ const Update = () => {
         console.log(data);
         if (data.modifiedCount > 0) {
           alert("User Update Successfully.");
+          form.reset();
         }
       });
   };
