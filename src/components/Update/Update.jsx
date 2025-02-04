@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 
 const Update = () => {
-  const userData = useLoaderData() || [];
+  const userData = useLoaderData();
 
   const handelUpdate = (event) => {
     event.preventDefault();
@@ -9,7 +9,7 @@ const Update = () => {
     const name = form.name.value;
     const email = form.email.value;
     console.log(name, email);
-    const updateUser = (name, email);
+    const updateUser = { name, email };
 
     fetch(`http://localhost:5000/users/${userData._id}`, {
       method: "PUT",
@@ -21,6 +21,9 @@ const Update = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.modifiedCount > 0) {
+          alert("User Update Successfully.");
+        }
       });
   };
 
